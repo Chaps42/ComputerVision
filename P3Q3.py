@@ -46,6 +46,9 @@ def main():
 
     #Creates a new image of the two images with lines drawn in between the points
 
+    width = int(((src_pts[2][0]-src_pts[0][0])**2+(src_pts[2][1]-src_pts[0][1])**2)**.5)
+    height = int(((src_pts[1][0]-src_pts[0][0])**2+(src_pts[1][1]-src_pts[0][1])**2)**.5)
+
     dst_pts.append((0,height))
     dst_pts.append((width,height))
     dst_pts.append((0,0))
@@ -57,12 +60,15 @@ def main():
     src_pts = np.float32(src_pts).reshape(-1, 1, 2)
 
     print('Number of points:', len(src_pts))
+    print('Source:', src_pts)
+    print('Source:', dst_pts)
 
     M = cv2.getPerspectiveTransform(src_pts,dst_pts)
 
     # Generate final image
-    height, width, _ = img1.shape
+    #height, width, _ = img1.shape
     result = cv2.warpPerspective(img1_c, M, (width, height))
+    result = cv2.resize(result,(width,height))
 
     cv2.imwrite('images/Q3-'+number+'modified.jpg', result)
 
