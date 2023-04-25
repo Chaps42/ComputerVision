@@ -7,7 +7,7 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    number = str(12)
+    number = str(2)
 
     parser.add_argument('-s', '--src_image', default='images/'+number+'.jpg')
     parser.add_argument('-d', '--des_image', default='images/'+number+'Modified.jpg')
@@ -46,8 +46,8 @@ def main():
 
     #Creates a new image of the two images with lines drawn in between the points
 
-    width = int(((src_pts[2][0]-src_pts[0][0])**2+(src_pts[2][1]-src_pts[0][1])**2)**.5)
-    height = int(((src_pts[1][0]-src_pts[0][0])**2+(src_pts[1][1]-src_pts[0][1])**2)**.5)
+    height = int(((src_pts[2][0]-src_pts[0][0])**2+(src_pts[2][1]-src_pts[0][1])**2)**.5)
+    width = int(((src_pts[1][0]-src_pts[0][0])**2+(src_pts[1][1]-src_pts[0][1])**2)**.5)
 
     dst_pts.append((0,height))
     dst_pts.append((width,height))
