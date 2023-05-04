@@ -7,7 +7,7 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    number = str(2)
+    number = str(12)
 
     parser.add_argument('-s', '--src_image', default='images/'+number+'.jpg')
     parser.add_argument('-d', '--des_image', default='images/'+number+'Modified.jpg')
@@ -46,6 +46,7 @@ def main():
 
     #Creates a new image of the two images with lines drawn in between the points
 
+    #height, width, _ = img1.shape
     height = int(((src_pts[2][0]-src_pts[0][0])**2+(src_pts[2][1]-src_pts[0][1])**2)**.5)
     width = int(((src_pts[1][0]-src_pts[0][0])**2+(src_pts[1][1]-src_pts[0][1])**2)**.5)
 
@@ -66,7 +67,6 @@ def main():
     M = cv2.getPerspectiveTransform(src_pts,dst_pts)
 
     # Generate final image
-    #height, width, _ = img1.shape
     result = cv2.warpPerspective(img1_c, M, (width, height))
     result = cv2.resize(result,(width,height))
 

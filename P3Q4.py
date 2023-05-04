@@ -7,7 +7,7 @@ def main():
 
     parser = argparse.ArgumentParser()
 
-    number = str(12)
+    number = str(16)
 
     parser.add_argument('-s', '--src_image', default='images/'+number+'.jpg')
     parser.add_argument('-d', '--des_image', default='images/'+number+'Modified.jpg')
